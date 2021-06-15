@@ -8,6 +8,9 @@ import com.example.project.Model.User;
 
 @Repository
 public interface UserRepository extends CrudRepository<User,Integer> {
+		
+	public User findByUsername(String username);
 	
+	public User findByUsernameAndPassword(String username,String Password);
 
 }

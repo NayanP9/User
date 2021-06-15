@@ -22,5 +22,16 @@ public class UserService {
 	public void saveMyUser(User user) {
 		userrepo.save(user);
 	}
+	
+	public User fetchUserByUsername(String username) {
+		return userrepo.findByUsername(username);
+	}
+	
+	public User fetchUserByUsernameAndPassword(String username,String Password) {
+		return userrepo.findByUsernameAndPassword(username, Password);
+	}
+	
+	
+	
 
 }
