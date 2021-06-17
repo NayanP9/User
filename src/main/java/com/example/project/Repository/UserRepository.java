@@ -12,5 +12,10 @@ public interface UserRepository extends CrudRepository<User,Integer> {
 	public User findByUsername(String username);
 	
 	public User findByUsernameAndPassword(String username,String Password);
-
+	
+	public Iterable<User> deleteByUsername(String username);
+	
+	public Iterable<User> findById(int profile_id);
+		
+	
 }

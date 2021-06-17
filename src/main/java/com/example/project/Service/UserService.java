@@ -1,10 +1,15 @@
 package com.example.project.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.project.Model.User;
 import com.example.project.Repository.UserRepository;
+
+
 
 @Service
 public class UserService {
@@ -30,6 +35,26 @@ public class UserService {
 	public User fetchUserByUsernameAndPassword(String username,String Password) {
 		return userrepo.findByUsernameAndPassword(username, Password);
 	}
+	
+	public List<User> showAllUsers(){
+		List<User> users = new ArrayList<User>();
+		for(User user : userrepo.findAll()) {
+			users.add(user);
+		}
+		
+		return users;
+	}
+	
+	public List<User>deleteMyUser(String username) {
+		return (List<User>) userrepo.deleteByUsername(username);
+	}
+	
+    public List<User> fetchByProfile(int profile_id) {
+    	return (List<User>) userrepo.findById(profile_id);
+    }
+		
+	
+	
 	
 	
 	

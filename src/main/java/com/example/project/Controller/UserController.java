@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,11 +46,34 @@ public class UserController {
 			throw new Exception ("Bad Credentials");
 		}
 		return userObj;
-		
-		
-		
-		
-		
 	}
+	
+	@CrossOrigin
+	@GetMapping("/all-users")
+	@Transactional
+	public Iterable<User> showAllUsers() {
+		return service.showAllUsers();
+	}
+	
+	@CrossOrigin
+	@Transactional
+	@GetMapping("/delete/{username}")
+	public Iterable<User> deleteUser(@PathVariable String username){
+		return service.deleteMyUser(username);
+	}
+	
+	@CrossOrigin
+	@GetMapping("/search/{username}")
+	public User searchUser(@PathVariable String username) {
+		return service.fetchUserByUsername(username);
+	}
+	
+	
+	@GetMapping("/profile")
+	public User fetchByProfile_id(@RequestBody User user) {
+		int profile_id = user.getProfile_id();
+		return (User) service.fetchByProfile(profile_id);
+	}
+	
 
 }
