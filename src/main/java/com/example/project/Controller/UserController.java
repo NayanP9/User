@@ -1,5 +1,9 @@
 package com.example.project.Controller;
 
+import java.util.List;
+
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -7,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.project.Model.User;
@@ -69,10 +74,9 @@ public class UserController {
 	}
 	
 	
-	@GetMapping("/profile")
-	public User fetchByProfile_id(@RequestBody User user) {
-		int profile_id = user.getProfile_id();
-		return (User) service.fetchByProfile(profile_id);
+	@RequestMapping("/profile")
+	public List<User> fetchByProfile_id() {
+		return service.fetchByProfile();
 	}
 	
 

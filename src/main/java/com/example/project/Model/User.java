@@ -22,7 +22,7 @@ public class User {
 	public User() {}
 
 	//Parameterized Constructor
-	public User(int id, String username, String dob, String email, String password, String gender, int  profile_id) {
+	public User(int id, String username, String dob, String email, String password, String gender, int profile_id) {
 		super();
 		this.id = id;
 		this.username = username;

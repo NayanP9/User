@@ -49,10 +49,19 @@ public class UserService {
 		return (List<User>) userrepo.deleteByUsername(username);
 	}
 	
-    public List<User> fetchByProfile(int profile_id) {
-    	return (List<User>) userrepo.findById(profile_id);
+    public   List<User>  fetchByProfile() {
+    	//return (List<User>) userrepo.getProfileId();
+    	List<User> alluser = userrepo.getProfileId();
+        
+        alluser.forEach(e->{System.out.println(e);
+        
+       });
+		return null;
+    	
     }
 		
+    
+   
 	
 	
 	
