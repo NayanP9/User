@@ -7,11 +7,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.project.Model.User;
@@ -38,20 +40,44 @@ public class UserController {
 	@CrossOrigin
 	@PostMapping("/login")
 	@Transactional
-	public User loginUser(@RequestBody User user) throws Exception {
-		String tempUsername = user.getUsername();
-		String temppassword = user.getPassword();
+	public User loginUser(@RequestBody User u) throws Exception {
+		String tempUsername = u.getUsername();
+		String temppassword = u.getPassword();
+		int tempprofileid = u.getProfileid();
 		
-		User userObj = null;
 		
-		if(tempUsername != null && temppassword != null) {
-			userObj = service.fetchUserByUsernameAndPassword(tempUsername, temppassword);
+		
+	
+		
+		
+		User user = null;
+		
+		if(tempUsername != null && temppassword != null && tempprofileid != 9) {
+			user = service.fetchUserByUsernameAndPasswordAndProfileid(tempUsername, temppassword, tempprofileid);
 		}
-		if(userObj == null) {
+		else if(user == null) {
 			throw new Exception ("Bad Credentials");
 		}
-		return userObj;
+//		if(user!=null){
+//			if(user.getProfile_id()==1) {
+//				user.setProfileName("Customer");
+//			}
+//			if(user.getProfile_id()==2) {
+//				user.setProfileName("Employee");
+//			}
+//			
+//			if(user.getProfile_id()==3) {
+//				user.setProfileName("Artist");
+//			}
+//		
+//		}
+		System.out.println(user + tempUsername + tempprofileid );
+		return user;
+		
 	}
+	
+	
+
 	
 	@CrossOrigin
 	@GetMapping("/all-users")
@@ -62,7 +88,7 @@ public class UserController {
 	
 	@CrossOrigin
 	@Transactional
-	@GetMapping("/delete/{username}")
+	@DeleteMapping("/delete/{username}")
 	public Iterable<User> deleteUser(@PathVariable String username){
 		return service.deleteMyUser(username);
 	}
@@ -74,10 +100,6 @@ public class UserController {
 	}
 	
 	
-	@RequestMapping("/profile")
-	public List<User> fetchByProfile_id() {
-		return service.fetchByProfile();
-	}
-	
+
 
 }

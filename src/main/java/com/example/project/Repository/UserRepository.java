@@ -12,16 +12,21 @@ import org.springframework.stereotype.Repository;
 import com.example.project.Model.User;
 
 @Repository
+
 public interface UserRepository extends JpaRepository<User,Integer> {
 		
 	public User findByUsername(String username);
 	
-	public User findByUsernameAndPassword(String username,String Password);
+	public User findByUsernameAndPasswordAndProfileid(String username,String password,int profileid);
+	
+//	public User findByProfile(int profile_id);
+	
+	
 	
 	public Iterable<User> deleteByUsername(String username);
 	
-	@Query("SELECT profile_id FROM usertable")
-	public List<User> getProfileId();
+	//@Query("SELECT profile_id FROM User")
+	//public List<User> getProfileId();
 		
 	
 }

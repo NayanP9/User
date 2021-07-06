@@ -32,9 +32,14 @@ public class UserService {
 		return userrepo.findByUsername(username);
 	}
 	
-	public User fetchUserByUsernameAndPassword(String username,String Password) {
-		return userrepo.findByUsernameAndPassword(username, Password);
+	public User fetchUserByUsernameAndPasswordAndProfileid(String username,String password,int profileid) {
+		return userrepo.findByUsernameAndPasswordAndProfileid(username, password, profileid);
 	}
+	
+
+	
+	
+	
 	
 	public List<User> showAllUsers(){
 		List<User> users = new ArrayList<User>();
@@ -49,16 +54,7 @@ public class UserService {
 		return (List<User>) userrepo.deleteByUsername(username);
 	}
 	
-    public   List<User>  fetchByProfile() {
-    	//return (List<User>) userrepo.getProfileId();
-    	List<User> alluser = userrepo.getProfileId();
-        
-        alluser.forEach(e->{System.out.println(e);
-        
-       });
-		return null;
-    	
-    }
+
 		
     
    
