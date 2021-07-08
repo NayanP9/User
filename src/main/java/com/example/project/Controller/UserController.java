@@ -3,7 +3,9 @@ package com.example.project.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -58,6 +60,26 @@ public class UserController {
 		  userObj = service.fetchUserByPid(tempPid); 
 		  } return userObj;
 	   }
+	  
+	  @CrossOrigin
+		@GetMapping("/all-users")
+		@Transactional
+		public Iterable<User> showAllUsers() {
+			return service.showAllUsers();
+		}
+		
+		@CrossOrigin
+		@Transactional
+		@DeleteMapping("/delete/{username}")
+		public Iterable<User> deleteUser(@PathVariable String username){
+			return service.deleteUser(username);
+		}
+		
+		@CrossOrigin
+		@GetMapping("/search/{username}")
+		public User searchUser(@PathVariable String username) {
+			return service.fetchUserByUsername(username);
+		}
 	 
 	
 	

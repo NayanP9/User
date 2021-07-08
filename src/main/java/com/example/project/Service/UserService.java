@@ -1,5 +1,8 @@
 package com.example.project.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +37,19 @@ public class UserService {
 	  public User fetchUserByPid(int pid) { 
 		  return userrepo.findByPid(pid); 
       }
+	  
+	  public List<User> showAllUsers(){
+			List<User> users = new ArrayList<User>();
+			for(User user : userrepo.findAll()) {
+				users.add(user);
+			}
+			
+			return users;
+		}
+		
+		public List<User>deleteUser(String username) {
+			return (List<User>) userrepo.deleteByUsername(username);
+		}
 	 
     
 		/*
