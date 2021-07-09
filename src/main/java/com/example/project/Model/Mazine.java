@@ -10,7 +10,7 @@ public class Mazine {
 	
 	@Id
 	private int mag_id;
-	private String mag_name;
+	private String magname;
 	private long mag_price;
 	private String mag_type;
 	
@@ -21,7 +21,7 @@ public class Mazine {
 	public Mazine(int mag_id, String mag_name, long mag_price, String mag_type) {
 		super();
 		this.mag_id = mag_id;
-		this.mag_name = mag_name;
+		this.magname = mag_name;
 		this.mag_price = mag_price;
 		this.mag_type = mag_type;
 	}
@@ -34,12 +34,12 @@ public class Mazine {
 		this.mag_id = mag_id;
 	}
 
-	public String getMag_name() {
-		return mag_name;
+	public String getMagname() {
+		return magname;
 	}
 
 	public void setMag_name(String mag_name) {
-		this.mag_name = mag_name;
+		this.magname = mag_name;
 	}
 
 	public long getMag_price() {

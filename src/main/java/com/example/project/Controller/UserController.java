@@ -1,17 +1,18 @@
 package com.example.project.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import java.util.*;
+//import java.util.*;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.project.Model.Mazine;
+//import com.example.project.Model.Mazine;
 import com.example.project.Model.User;
 import com.example.project.Service.UserService;
 
@@ -63,12 +64,12 @@ public class UserController {
 	public Iterable<User> showAllUsers() {
 		return service.showAllUsers();
 	}
-//	@CrossOrigin
-//	@Transactional
-//	@GetMapping("/delete/{username}")
-//	public Iterable<User> deleteUser(@PathVariable String username){
-//		return service.deleteMyUser(username);
-//	}
+	@CrossOrigin
+	@Transactional
+	@DeleteMapping("/delete/{username}")
+	public Iterable<User> deleteUser(@PathVariable String username){
+		return service.deleteMyUser(username);
+}
 //	
 //	@CrossOrigin
 //	@GetMapping("/search/{username}")

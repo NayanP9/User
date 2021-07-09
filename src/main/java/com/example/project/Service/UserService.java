@@ -42,9 +42,9 @@ public class UserService {
 		return users;
 	}
 	
-//	public List<User>deleteMyUser(String username) {
-//		return (List<User>) userrepo.deleteByUsername(username);
-//	}
+	public List<User>deleteMyUser(String username) {
+		return (List<User>) userrepo.deleteByUsername(username);
+	}
 //	
 //    public   List<User>  fetchByProfile() {
 //    	//return (List<User>) userrepo.getProfileId();

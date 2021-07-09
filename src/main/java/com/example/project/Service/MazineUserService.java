@@ -34,9 +34,10 @@ public class MazineUserService {
 		
 		return magusers;
 	}
-//	public List<Mazine>deleteMyUser(String mag_name) {
-//		return (List<Mazine>) magrepo.deleteBymagname(mag_name);
-//	}
-	
+
+
+	public List<Mazine> deleteMyUser(String magname) {
+	return  (List<Mazine>) magrepo.deleteByMagname(magname);
+	}
 
 }
