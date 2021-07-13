@@ -5,15 +5,10 @@ package com.example.project.Model;
 
 
 import java.sql.Date;
-import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.Transient;
-import javax.print.attribute.standard.DateTimeAtCreation;
 
 import org.hibernate.annotations.DynamicInsert;
 
@@ -36,6 +31,11 @@ public class User {
 	private int profileid;
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date datetime;
+	
+	
+	
+	
+	
 
 	
 	

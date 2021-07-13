@@ -2,8 +2,10 @@ package com.example.project.Model;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
@@ -16,12 +18,15 @@ public class Campaign {
 	private Date enddate;
 	private String offer;
 	private String status;
+	@Lob
+	@Column(name = "image")
+    private byte[] image;
 	
 	public Campaign() {
 		super();
 	}
 
-	public Campaign(int festid,String festname, Date startdate,Date enddate, String offer, String status) {
+	public Campaign(int festid,String festname, Date startdate,Date enddate, String offer, String status,byte[] image ) {
 		super();
 		this.festid = festid;
 		this.festname = festname;
@@ -29,7 +34,8 @@ public class Campaign {
 		this.enddate = enddate;
 		this.offer = offer;
 		this.status = status;
-	}
+		this.image = image;
+ 	}
 	
 	
 
@@ -83,7 +89,12 @@ public class Campaign {
 		this.status = status;
 	}
 
+	public byte[] getImage() {
+		return image;
+	}
 
-	
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
 
 }
