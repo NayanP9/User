@@ -17,15 +17,16 @@ public interface UserRepository extends JpaRepository<User,Integer> {
 		
 	public User findByUsername(String username);
 	
-	public User findByUsernameAndPasswordAndProfileid(String username,String password,int profileid);
+	public User findByUsernameAndPassword(String username,String password);
 	
-//	public User findByProfile(int profile_id);
+	public User findByProfileid(int profile_id);
+	
 	
 	
 	
 	public Iterable<User> deleteByUsername(String username);
 	
-	//@Query("SELECT profile_id FROM User")
+	//@Query(value="SELECT profile_id FROM User",native query=true)
 	//public List<User> getProfileId();
 		
 	

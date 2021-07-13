@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.project.Model.User;
 import com.example.project.Service.UserService;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
+
 
 
 @RestController
@@ -27,7 +29,7 @@ public class UserController {
 	@Autowired
 	private UserService service;
 	
-	
+	//SAVE THE USER IN DATABASE
 	@CrossOrigin
 	@PostMapping("/save-user")
 	@Transactional
@@ -36,26 +38,21 @@ public class UserController {
 		return "Hello,"+user.getUsername()+"your registration is done";	
 	}
 	
-	
+	//LOGIN LOGIC
 	@CrossOrigin
 	@PostMapping("/login")
 	@Transactional
 	public User loginUser(@RequestBody User u) throws Exception {
 		String tempUsername = u.getUsername();
 		String temppassword = u.getPassword();
-		int tempprofileid = u.getProfileid();
-		
-		
-		
-	
-		
+	//	int tempprofileid = u.getProfileid();
 		
 		User user = null;
 		
-		if(tempUsername != null && temppassword != null && tempprofileid != 9) {
-			user = service.fetchUserByUsernameAndPasswordAndProfileid(tempUsername, temppassword, tempprofileid);
+		if(tempUsername != null && temppassword != null) {
+			user = service.fetchUserByUsernameAndPassword(tempUsername, temppassword);
 		}
-		else if(user == null) {
+		if(user == null) {
 			throw new Exception ("Bad Credentials");
 		}
 //		if(user!=null){
@@ -71,14 +68,14 @@ public class UserController {
 //			}
 //		
 //		}
-		System.out.println(user + tempUsername + tempprofileid );
+		System.out.println(user + tempUsername +temppassword );
 		return user;
 		
 	}
 	
 	
 
-	
+	//LIST ALL THE USER FROM THE DATABASE
 	@CrossOrigin
 	@GetMapping("/all-users")
 	@Transactional
@@ -86,6 +83,7 @@ public class UserController {
 		return service.showAllUsers();
 	}
 	
+	//DELETE THE USER FORM DATABASE
 	@CrossOrigin
 	@Transactional
 	@DeleteMapping("/delete/{username}")
@@ -93,11 +91,21 @@ public class UserController {
 		return service.deleteMyUser(username);
 	}
 	
+	//SEARCH THE USER
 	@CrossOrigin
 	@GetMapping("/search/{username}")
 	public User searchUser(@PathVariable String username) {
 		return service.fetchUserByUsername(username);
 	}
+	
+	@PostMapping("/profile")
+	public User searchProfileid(@RequestBody int profileid) {
+		System.out.println(profileid);
+		return service.fetchUserByProfileid(profileid);
+		
+	}
+	
+	
 	
 	
 

@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.print.attribute.standard.DateTimeAtCreation;
 
 import org.hibernate.annotations.DynamicInsert;
 
@@ -25,44 +26,39 @@ public class User {
 	
 	@Id
 	private int id;
+	private String empid;
 	private String username;
 	@JsonFormat(pattern = "yyyy-MM-dd")
-	//@Temporal(TemporalType.DATE)
 	private Date dob;
 	private String email;
 	private String password;
 	private String gender;
 	private int profileid;
-	@Transient
-	private String profileName; 
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	private Date datetime;
+
 	
 	
 	//default constructor
 	public User() {}
 
 	//Parameterized Constructor
-	public User(int id, String username, Date dob, String email, String password, String gender, int profileid) {
+	public User(int id, String empid ,String username, Date dob, String email, String password, String gender, int profileid,Date datetime) {
 		super();
 		this.id = id;
+		this.empid = empid;
 		this.username = username;
 		this.dob = dob;
 		this.email = email;
 		this.password = password;
 		this.gender = gender;
 		this.profileid = profileid;
+		this.datetime = datetime;
 		
 		
 		
 		
 		
-	}
-
-	public String getProfileName() {
-		return profileName;
-	}
-
-	public void setProfileName(String profileName) {
-		this.profileName = profileName;
 	}
 
 	//Getter And setters
@@ -72,6 +68,15 @@ public class User {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	public String getEmpid() {
+		return empid;
+	}
+
+	public void setEmpid(String empid) {
+		this.empid = empid;
+	}
+
 	public String getUsername() {
 		return username;
 	}
@@ -105,9 +110,18 @@ public class User {
 	public int getProfileid() {
 		return profileid;
 	}
-	public void setProfile_id(int profile_id) {
-		this.profileid = profile_id;
+	public void setProfileid(int profileid) {
+		this.profileid = profileid;
 	}
+
+	public Date getDatetime() {
+		return datetime;
+	}
+
+	public void setDatetime(Date datetime) {
+		this.datetime = datetime;
+	}
+	
 		
 
 }

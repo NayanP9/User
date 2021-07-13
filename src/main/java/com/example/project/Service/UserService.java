@@ -32,8 +32,12 @@ public class UserService {
 		return userrepo.findByUsername(username);
 	}
 	
-	public User fetchUserByUsernameAndPasswordAndProfileid(String username,String password,int profileid) {
-		return userrepo.findByUsernameAndPasswordAndProfileid(username, password, profileid);
+	public User fetchUserByUsernameAndPassword(String username,String password) {
+		return userrepo.findByUsernameAndPassword(username, password);
+	}
+	
+	public User fetchUserByProfileid(int profileid) {
+		return userrepo.findByProfileid(profileid);	
 	}
 	
 

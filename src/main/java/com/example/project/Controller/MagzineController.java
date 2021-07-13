@@ -40,7 +40,7 @@ public class MagzineController {
 		return magservice.showAllUsers();
 	}
 
-	
+	@CrossOrigin
 	@Transactional
 	@DeleteMapping("/deletemag/{magname}")
 	public Iterable<Mazine> deleteMazine(@PathVariable String magname){
