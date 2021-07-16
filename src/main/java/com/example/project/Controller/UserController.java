@@ -34,24 +34,29 @@ public class UserController {
 	}
 	
 	
-	@CrossOrigin
-	@PostMapping("/login")
-	@Transactional
-	public User loginUser(@RequestBody User user) throws Exception {
-		String tempUsername = user.getUsername();
-		String temppassword = user.getPassword();
+	//LOGIN LOGIC
+		@CrossOrigin
+		@PostMapping("/login")
+		@Transactional
+		public User loginUser(@RequestBody User u) throws Exception {
+			String tempUsername = u.getUsername();
+			String temppassword = u.getPassword();
+		//int tempprofileid = u.getProfile_id();
+			
+			User user = null;
+			
+			if(tempUsername != null && temppassword != null) {
+				user = service.fetchUserByUsernameAndPassword(tempUsername, temppassword);
+			}
+			if(user == null) {
+				throw new Exception ("Bad Credentials");
+			}
 		
-		User userObj = null;
-		
-		if(tempUsername != null && temppassword != null) {
-			userObj = service.fetchUserByUsernameAndPassword(tempUsername, temppassword);
+			System.out.println(user + tempUsername +temppassword );
+			return user;
+			
 		}
-		if(userObj == null) {
-			throw new Exception ("Bad Credentials");
-		}
-		return userObj;
 		
-	}
 	@CrossOrigin
 	@Transactional
 	public String reg(@RequestBody User user) {
@@ -69,20 +74,20 @@ public class UserController {
 	@DeleteMapping("/delete/{username}")
 	public Iterable<User> deleteUser(@PathVariable String username){
 		return service.deleteMyUser(username);
-}
-//	
-//	@CrossOrigin
-//	@GetMapping("/search/{username}")
-//	public User searchUser(@PathVariable String username) {
-//		return service.fetchUserByUsername(username);
-//	}
-//	
-//	
-//	@RequestMapping("/profile")
-//	public List<User> fetchByProfile_id() {
-//		return service.fetchByProfile();
-//	}
-//	
+	}
+	//SEARCH THE USER
+		@CrossOrigin
+		@GetMapping("/search/{username}")
+		public User searchUser(@PathVariable String username) {
+			return service.fetchUserByUsername(username);
+		}
+		
+		@PostMapping("/profile")
+		public User searchProfileid(@RequestBody int profileid) {
+			System.out.println(profileid);
+			return service.fetchUserByProfileid(profileid);
+			
+		}
 
 }
 	

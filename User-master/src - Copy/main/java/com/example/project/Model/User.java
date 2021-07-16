@@ -15,14 +15,14 @@ public class User {
 	private String email;
 	private String password;
 	private String gender;
-	private int profileid;
+	private int profile_id;
 	
 	
 	//default constructor
 	public User() {}
 
 	//Parameterized Constructor
-	public User(int id, String username, String dob, String email, String password, String gender, int  profileid) {
+	public User(int id, String username, String dob, String email, String password, String gender, int  profile_id) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -30,7 +30,12 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.gender = gender;
-		this.profileid = profileid;	
+		this.profile_id = profile_id;
+		
+		
+		
+		
+		
 	}
 
 	//Getter And setters
@@ -70,11 +75,12 @@ public class User {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public int getProfileid() {
-		return profileid;
+	public int getProfile_id() {
+		return profile_id;
 	}
-	public void setProfile_id(int profileid) {
-		this.profileid = profileid;
+	public void setProfile_id(int profile_id) {
+		this.profile_id = profile_id;
 	}
+		
 
 }

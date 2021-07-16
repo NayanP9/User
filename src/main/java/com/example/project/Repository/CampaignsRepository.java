@@ -5,7 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import com.example.project.Model.Campaign;
 
-@Repository
-public interface CampaignsRepository extends JpaRepository<Campaign, String>{
 
+@Repository
+public interface CampaignsRepository extends JpaRepository<Campaign, Integer>{
+	public Iterable<Campaign> deleteByFestname(String festname);
 }

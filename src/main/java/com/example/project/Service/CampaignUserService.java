@@ -1,5 +1,8 @@
 package com.example.project.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,5 +26,19 @@ public class CampaignUserService {
 	public void saveCampUser(Campaign campuser) {
 		camprepo.save(campuser);
 	}
+	public List<Campaign> showAllCamp(){
+		List<Campaign> campusers = new ArrayList<Campaign>();
+		for(Campaign campuser : camprepo.findAll()) {
+			campusers.add(campuser);
+		}
+		
+		return campusers;
+	}
 
+
+	public Iterable<Campaign> deleteCamp(String festname) {
+	return  (List<Campaign>) camprepo.deleteByFestname(festname);
+	}
+
+	
 }

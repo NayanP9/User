@@ -21,7 +21,11 @@ public interface UserRepository extends CrudRepository<User,Integer> {
 	
 	public User findByUsernameAndPassword(String username,String Password);
 	
+	public User findByProfileid(int profileid);
+	
 	public Iterable<User> deleteByUsername(String username);
+
+	
 	
 
 //	@Query("SELECT profile_id FROM usertable")

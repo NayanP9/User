@@ -1,6 +1,6 @@
 package com.example.project.Model;
 
-import java.sql.Date;
+//import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -10,6 +10,7 @@ import javax.persistence.Table;
 @Table(name="offertable")
 public class Campaign {
 	@Id
+	private int festid;
 	private String festname;
 	private String startdate;
 	private String enddate;
@@ -20,13 +21,22 @@ public class Campaign {
 		super();
 	}
 
-	public Campaign(String festname, String startdate, String enddate, String offer, String status) {
+	public Campaign(int festid, String festname, String startdate, String enddate, String offer, String status) {
 		super();
+		this.festid = festid;
 		this.festname = festname;
 		this.startdate = startdate;
 		this.enddate = enddate;
 		this.offer = offer;
 		this.status = status;
+	}
+
+	public int getFestid() {
+		return festid;
+	}
+
+	public void setFestid(int festid) {
+		this.festid = festid;
 	}
 
 	public String getFestname() {

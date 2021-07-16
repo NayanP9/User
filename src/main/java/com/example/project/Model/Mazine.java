@@ -13,6 +13,7 @@ public class Mazine {
 	private String magname;
 	private long mag_price;
 	private String mag_type;
+	private long discountprice;
 	
 	public Mazine() {
 		super();
