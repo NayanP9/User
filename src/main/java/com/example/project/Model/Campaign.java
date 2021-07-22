@@ -19,14 +19,14 @@ public class Campaign {
 	private String offer;
 	private String status;
 	@Lob
-	@Column(name = "image")
-    private byte[] image;
+	@Column(name = "image",columnDefinition = "MEDIUMBLOB")
+    private String image;
 	
 	public Campaign() {
 		super();
 	}
 
-	public Campaign(int festid,String festname, Date startdate,Date enddate, String offer, String status,byte[] image ) {
+	public Campaign(int festid,String festname, Date startdate,Date enddate, String offer, String status,String image ) {
 		super();
 		this.festid = festid;
 		this.festname = festname;
@@ -89,11 +89,11 @@ public class Campaign {
 		this.status = status;
 	}
 
-	public byte[] getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(byte[] image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 

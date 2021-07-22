@@ -29,5 +29,17 @@ public class CampaignUserService {
 	public List<Campaign> getAllOffers() {
 		return camprepo.findAll();
 	}
+	
+	public Campaign saveCampUser1(Campaign campuser) {
+		
+		return camprepo.save(campuser);
+		
+	}
+	
+	
 
+
+	
+	 	
+	
 }
