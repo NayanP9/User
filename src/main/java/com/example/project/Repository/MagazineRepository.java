@@ -12,7 +12,9 @@ public interface MagazineRepository extends JpaRepository<Magazine, Integer> {
 
 	public Iterable<Magazine> deleteByMagid(int magid);
 
-
-	
-	
+	/*
+	 * public Magazine getImage(byte[] coverimage);
+	 * 
+	 * public Magazine uploadImage(byte[] coverimage);
+	 */
 }

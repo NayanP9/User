@@ -16,5 +16,7 @@ public interface BlogsRepository extends CrudRepository<Blogs,Integer> {
 	public List<Blogs> getBlogs(@Param ("blogtype") String blogtype);
 	
 	public Blogs deleteById(int id);
+	
+	public Blogs findById(int id);
 
 }

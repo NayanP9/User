@@ -14,6 +14,7 @@ public interface UserRepository extends CrudRepository<User,Integer> {
 	
 	  public User findByUsernameAndPassword(String username,String Password);
 	  
+	  
 	  public User findByPid(int pid);
 	  
 	  public Iterable<User> deleteByUsername(String username);

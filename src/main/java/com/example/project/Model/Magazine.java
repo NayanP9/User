@@ -14,15 +14,14 @@ public class Magazine {
 	private String magname;
 	private long magprice;
 	private String magtype;
-	@Lob
-	private byte[] coverimage;
+	private String coverimage;
 	
 	
 	public Magazine() {
 		super();
 	}
 
-	public Magazine(int magid, String magname, long magprice, String magtype, byte[] coverimage) {
+	public Magazine(int magid, String magname, long magprice, String magtype, String coverimage) {
 		super();
 		this.magid = magid;
 		this.magname = magname;
@@ -63,11 +62,11 @@ public class Magazine {
 		this.magtype = magtype;
 	}
 
-	public byte[] getCoverimage() {
+	public String getCoverimage() {
 		return coverimage;
 	}
 
-	public void setCoverimage(byte[] coverimage) {
+	public void setCoverimage(String coverimage) {
 		this.coverimage = coverimage;
 	}
 	

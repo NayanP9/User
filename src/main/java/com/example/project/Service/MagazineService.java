@@ -3,6 +3,7 @@ package com.example.project.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import com.example.project.Model.Magazine;
 import com.example.project.Repository.MagazineRepository;
 
@@ -38,5 +39,14 @@ public class MagazineService {
 	public List<Magazine> deleteMagazine(int magid) {
 	return  (List<Magazine>) magrepo.deleteByMagid(magid);
 	}	
+	
+
+	/*
+	 * public Magazine findImage(byte[] coverimage) { return
+	 * magrepo.getImage(coverimage); }
+	 * 
+	 * public Magazine saveImage(byte[] coverimage) { return
+	 * magrepo.uploadImage(coverimage); }
+	 */
 
 }

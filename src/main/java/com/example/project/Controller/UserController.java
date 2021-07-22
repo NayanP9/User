@@ -45,7 +45,8 @@ public class UserController {
 	  if(tempUsername != null && temppassword != null) { 
 		  userObj = service.fetchUserByUsernameAndPassword(tempUsername, temppassword); 
 		  }
-	  if(userObj == null) { throw new Exception ("Bad Credentials"); 
+	  if(userObj == null) { 
+		  throw new Exception ("Bad Credentials"); 
 	  } return userObj; 
 	  }
 	  
