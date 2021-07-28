@@ -15,19 +15,21 @@ public class Magazine {
 	private long magprice;
 	private String magtype;
 	private String coverimage;
+	private int discountprice;
 	
 	
 	public Magazine() {
 		super();
 	}
 
-	public Magazine(int magid, String magname, long magprice, String magtype, String coverimage) {
+	public Magazine(int magid, String magname, long magprice, String magtype, String coverimage, int discountprice) {
 		super();
 		this.magid = magid;
 		this.magname = magname;
 		this.magprice = magprice;
 		this.magtype = magtype;
 		this.coverimage=coverimage;
+		this.discountprice=discountprice;
 	}
 
 	public int getMagid() {
@@ -68,6 +70,14 @@ public class Magazine {
 
 	public void setCoverimage(String coverimage) {
 		this.coverimage = coverimage;
+	}
+
+	public int getDiscountprice() {
+		return discountprice;
+	}
+
+	public void setDiscountprice(int discountprice) {
+		this.discountprice = discountprice;
 	}
 	
 	
